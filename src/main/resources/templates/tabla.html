@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Listado de Vacantes</title>
+
+<!-- BOOTSTRAP DEPENDENCY -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
+
+</head>
+<body>
+	
+	<!-- Adicionando imagen de logo estatica -->
+	<img th:src="@{/images/logo.png}" width="136" height="136">	
+	<h1 class="text-primary">Lista de Vacantes</h1>
+	
+	<table class="table table-striped table-bordered table-hover">
+	  <tr>
+	  	<th>Logo</th>
+	    <th>Id</th>
+	    <th>Nombre</th>
+	    <th>Fecha de Pub</th>
+	    <th>Salario</th>
+	    <th>Descripcion</th>
+	    <th>Destacada</th>
+	    <th>Detalle</th>
+	    <th>Borrar</th>
+	  </tr>
+	  
+	  <tr th:each="vacante: ${vacantes}">
+	  	<td>
+	  		<img th:src="@{/images/{img} (img=${vacante.imagen}) }" width="136" height="136">	
+	  	</td>
+	    <td th:text="${vacante.id}"></td>
+	    <td th:text="${vacante.nombre}"></td>
+	    <td th:text="${vacante.fecha}"></td>
+	    <td th:text="${vacante.salario}"></td>
+	    <td th:text="${vacante.descripcion}"></td>
+	    
+	    <!-- <td th:text="${vacante.destacada}"></td> -->
+	    <!-- <td th:text="${vacante.destacada == 1 ? 'Si' : 'No'}"></td>  -->
+	  	<td>
+	  		<span th:if="${vacante.destacada == 1}" class="badge badge-success">Si</span>
+	  		<span th:unless="${vacante.destacada == 1}" class="badge badge-danger">No</span>
+	  	</td>
+	  	<td>
+	  		<a th:href="@{/vacantes/view/{id} (id=${vacante.id})}" class="btn btn-success">Detalle</a>
+	  	</td>
+	  	<td>
+	  		<a th:href="@{/vacantes/delete(id=${vacante.id})}" class="btn btn-danger">Borrar</a>
+	  	</td>
+	  	
+	  </tr>
+
+	</table>
+	
+	<!-- Archivo de javaScript de bootstrap, que por cuestiones de rendimiento se movió del HEAD al final del BODY -->
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js" integrity="sha384-XEerZL0cuoUbHE4nZReLT7nx9gQrQreJekYhJD9WNWhH8nEW+0c5qq7aIo2Wl30J" crossorigin="anonymous"></script>	
+</body>
+</html>
