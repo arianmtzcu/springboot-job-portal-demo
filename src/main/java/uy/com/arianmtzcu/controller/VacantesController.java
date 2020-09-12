@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import uy.com.arianmtzcu.model.Vacante;
+import uy.com.arianmtzcu.service.ICategoriasService;
 import uy.com.arianmtzcu.service.IVacanteService;
 
 @Controller
@@ -27,6 +28,9 @@ public class VacantesController {
 		
 	@Autowired
 	private IVacanteService serviceVacante;
+	
+	@Autowired
+	private ICategoriasService serviceCategoria;
 	
 	@GetMapping("/index")
 	public String mostrarIndex(Model model) {		
@@ -64,7 +68,9 @@ public class VacantesController {
 	
 	//@RequestMapping("/create")
 	@GetMapping("/create")
-	public String crear(Vacante vacante) {
+	public String crear(Vacante vacante, Model model) {
+		//Método que se encarga de renderizar la vista para crear vacantes nuevas, por consiguiente se debe enviar en el modelo el listado de categorias...
+		model.addAttribute("categorias", serviceCategoria.buscarTodas());
 		return "vacantes/formVacante";
 	}
 	
