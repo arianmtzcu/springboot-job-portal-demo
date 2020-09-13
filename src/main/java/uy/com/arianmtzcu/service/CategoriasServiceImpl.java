@@ -27,8 +27,7 @@ public class CategoriasServiceImpl implements ICategoriasService {
 		Categoria cat2 = new Categoria();
 		cat2.setId(2);
 		cat2.setNombre("Ventas");
-		cat2.setDescripcion("Trabajos relacionados con Ventas");
-		
+		cat2.setDescripcion("Trabajos relacionados con Ventas");		
 					
 		// Categoria 3
 		Categoria cat3 = new Categoria();

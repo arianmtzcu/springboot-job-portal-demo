@@ -29,7 +29,9 @@
           <div class="card-body">
                     	
           	<!-- con la instruccion th:object="${vacante}" -> Vinculamos el objeto modelo -->
-            <form th:action="@{/vacantes/save}" method="post" th:object="${vacante}">  
+            <!-- <form th:action="@{/vacantes/save}" method="post" th:object="${vacante}"> -->  
+            <!-- configurando la subida de archivos -> enctype="multipart/form-data" -->
+            <form th:action="@{/vacantes/save}" method="post" th:object="${vacante}" enctype="multipart/form-data"> 
               
               <!-- DIV PARA MOSTRAR MENSAJES DE ERRORES -->
               <div th:if="${#fields.hasErrors('*')}"class='alert alert-danger' role='alert'>
@@ -58,7 +60,9 @@
                 <div class="col-md-3"> 
                   <div class="form-group">
                   	<label for="categoria">Categoría</label>
-                    <select class="form-control" name="categoria" id="categoria">
+                    <!-- <select class="form-control" name="categoria" id="categoria"> -->
+                    <!-- Se sustituye 'name' por 'th:field', y como categoría es un objeto (modelo) se mapea por el id, se inserta en el atributo id, el id del objeto seleccionado-->
+                    <select class="form-control" th:field="*{categoria.id}" id="categoria">
                       <option th:each="categoria : ${categorias}" 
 	                      	  th:value="${categoria.id}" 
 	                      	  th:text="${categoria.nombre}">
@@ -69,8 +73,6 @@
                       <option value="4">Informatica</option>
                       <option value="5">Construccion</option>-->
                     </select>
-                    <!--<select class="form-control" th:field="*{categoria.id}">                                           
-                    </select>-->
                   </div>
                 </div>
 
@@ -112,7 +114,7 @@
                 <div class="col-md-3"> 
                   <div class="form-group">
                     <label for="archivoImagen">Imagen</label>
-                    <input type="file" class="form-control-file" name="archivoImagen" id="archivoImagen">
+                    <input type="file" class="form-control-file" name="archivoImagenSubirServer" id="archivoImagenSubirServer">
                   </div>
                 </div>
               </div> 
