@@ -10,6 +10,7 @@ public class Utileria {
 	public static String guardarArchivo(MultipartFile multiPart, String ruta) {
 		// Obtenemos el nombre original del archivo.
 		String nombreOriginal = multiPart.getOriginalFilename();
+		//Remplazando espacios por '-' para que no de error futuro al concaternarse en una URL...
 		nombreOriginal = nombreOriginal.replace(" ", "-");
 		try {
 			// Formamos el nombre del archivo para guardarlo en el disco duro.
