@@ -1,12 +1,18 @@
 package uy.com.arianmtzcu.service;
 
 import java.util.List;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import uy.com.arianmtzcu.model.Categoria;
 
 public interface ICategoriasService {
 	void guardar(Categoria categoria);
 	List<Categoria> buscarTodas();
-	Categoria buscarPorId(Integer idCategoria);	
+	Categoria buscarPorId(Integer idCategoria);
+	Page<Categoria> buscarTodas(Pageable page);
+	void eliminar(int idCategoria);
 }
 
 /**

@@ -3,6 +3,8 @@ package uy.com.arianmtzcu.service;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import uy.com.arianmtzcu.model.Categoria;
@@ -82,6 +84,18 @@ public class CategoriasServiceImpl implements ICategoriasService {
 			}
 		}		
 		return null;
+	}
+
+	@Override
+	public Page<Categoria> buscarTodas(Pageable page) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void eliminar(int idCategoria) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
